@@ -2,15 +2,11 @@ var Shape = function(el) {
     this.element = document.querySelector(el);
 }
 Shape.prototype.rgb = function(r, g, b, a) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
-    this.a = a;
-    if (this.a === undefined) {
-        return "rgb("+this.r+", "+this.g+", "+this.b+")";
-    } else {
-        return "rgb("+this.r+", "+this.g+", "+this.b+", "+this.a+")";
-    }
+    this.red = r;
+    this.green = g;
+    this.blue = b;
+    this.alpha = a || 1;
+    return "rgb("+this.red+", "+this.green+", "+this.blue+", "+this.alpha+")";
 };
 Shape.prototype.rotate = function(el, angle) {
     this.angle = angle;
