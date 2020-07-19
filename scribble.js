@@ -10,7 +10,7 @@ Shape.prototype.rgb = function(r, g, b, a) {
 };
 Shape.prototype.rotate = function(el, angle) {
     this.angle = angle;
-    return doucment.querySelectorAll(el).style.transform = 'rotate('+this.angle+'deg)';
+    return document.querySelectorAll(el).style.transform = 'rotate('+this.angle+'deg)';
 };
 Shape.prototype.rect = function(x, y, w, h, color, r) {
     this.x = x;
