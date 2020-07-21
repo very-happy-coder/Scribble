@@ -1,5 +1,5 @@
 var Shape = function(el) {
-    this.element = document.querySelector(el);
+    this.element = document.querySelector(el) || document.querySelector('body');
 }
 Shape.prototype.rgb = function(r, g, b, a) {
     this.red = r;
@@ -141,4 +141,48 @@ Shape.prototype.dropdownInput = function(x, y, label, choices) {
         mySelect.appendChild(myOption);
     }
     return myLabel;
+};
+Shape.prototype.image = function(source, x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w || 150;
+    this.height = h || 100;
+    this.source = source;
+
+    var myImage = document.createElement("img");
+    myImage.setAttribute("src", this.source);
+    myImage.style.width = this.width + "px";
+    myImage.style.height = this.height + "px";
+    myImage.style.position = "absolute";
+    myImage.style.top = this.y+"px";
+    myImage.style.left = this.x+"px";
+    this.element.appendChild(myImage);
+    return myImage;
+};
+Shape.prototype.pageView = function(source, x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w || 150;
+    this.height = h || 100;
+    this.source = source;
+
+    var myPage = document.createElement("iframe");
+    myPage.setAttribute("src", this.source);
+    myPage.style.width = this.width + "px";
+    myPage.style.height = this.height + "px";
+    myPage.style.position = "absolute";
+    myPage.style.top = this.y+"px";
+    myPage.style.left = this.x+"px";
+    this.element.appendChild(myPage);
+    return myPage;
+};
+Shape.prototype.animate = function(action, frameRate) {
+    this.animateFrameRate = frameRate || 1;
+    this.animation = window.setInterval(action, this.animateFrameRate*1000);
+};
+Shape.prototype.clearAnimation = function() {
+    window.clearInterval(this.animation);
+};
+Shape.prototype.remove = function(el) {
+    el.remove();
 };
